@@ -53,15 +53,6 @@ def opcao3(mensagem):
     #########################################################
 
     bot.send_message(mensagem.chat.id, f'Você é um conselheiro? {os.linesep}/1-Sim {os.linesep}/2-Não')
-
-
-
-
-
-
-
-
-
     print(bot.get_me())    #traz as informações pessoais do usuário que está interagindo com o bot  #id=5060316690
 
     bot.send_message(mensagem.chat.id, f'Você é um conselheiro? {os.linesep}/1-Sim {os.linesep}/2-Não')
