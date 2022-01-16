@@ -10,7 +10,7 @@
 #########################################################
 # Importando as bibliotecas necessaárias para a construção do bot
 #########################################################
-#!pip install pytelegrambotapi   instala a biblioteca do Telegram via terminal
+# !pip install pytelegrambotapi   instala a biblioteca do Telegram via terminal
 import telebot
 import ast
 
@@ -19,12 +19,11 @@ from telebot import types
 #########################################################
 # Informações iniciais para a construção do bot
 #########################################################
-#import InlineKeyboardButton, InlineKeyboardMarkup, Update
-#from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext
+# import InlineKeyboardButton, InlineKeyboardMarkup, Update
+# from telegram.ext import Updater, CommandHandler, CallbackQueryHandler, CallbackContext
 
 CHAVE_API = '5060316690:AAHT4YuNvXGUEk6c9-exoUQAxYUie1IXXpE'
 bot = telebot.TeleBot(CHAVE_API)
-
 
 # Cria um dicionário com chaves e valores que serão utilizados como entrada para os botões do bot
 stringList = {"1": "Sim", "2": "Não"}
@@ -39,105 +38,109 @@ print(bot.get_me())
 # Função que trata das chaves e dos valores que vão para os botões do bot
 def makeKeyboard(perguntas_1):
     markup = types.InlineKeyboardMarkup()
-    #print("Passou - " + perguntas_1)
+    # print("Passou - " + perguntas_1)
 
     for key, value in stringList.items():
         if value != "":
-            markup.add(types.InlineKeyboardButton(text=value, callback_data="['value', '" + value + "', '" + key + "']"))
+            markup.add(
+                types.InlineKeyboardButton(text=value, callback_data="['value', '" + value + "', '" + key + "']"))
     return markup
 
 
-# Função que inicializa as apresentações dos botões com o comando "/ok"
+# Função que inicializa as apresentações dos botões com o comando "/aqui"
 @bot.message_handler(commands=['aqui'])
 def handle_command_adminwindow(message):
     msg = message.text
 
-#################################################################
-# Captação dos dados da empresa atraves dos botões
-#################################################################
-######################### pergunta 1 ############################
+    #################################################################
+    # Captação dos dados da empresa atraves dos botões
+    #################################################################
+    ######################### pergunta 1 ############################
     perguntas_1 = "Você é um conselherio?"
     bot.send_message(chat_id=message.chat.id,
                      reply_markup=makeKeyboard(perguntas_1),
                      text="Você é um conselherio?",
                      parse_mode='HTML')
 
-######################## pergunta 2 ############################
+    ######################## pergunta 2 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="A empresa possui governança corporativa?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 3 ############################
+    ######################## pergunta 3 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="A empresa possui Conselho Administrativo?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 4 ############################
+    ######################## pergunta 4 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="A empresa possui Conselho Fiscal?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 5 ############################
+    ######################## pergunta 5 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="A empresa possui Conselho Deliberativo?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 6 ############################
+    ######################## pergunta 6 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="A empresa possui Comitês?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 7 ############################
+    ######################## pergunta 7 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="A empresa possui Assembleias?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 8 ############################
+    ######################## pergunta 8 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="Existe algum outro tipo de Conselho dentro da empresa?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 9 ############################
+    ######################## pergunta 9 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="O Conselho da empresa reune mais de 3 vezes ao ano? ",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 10 ############################
+    ######################## pergunta 10 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="Os comitês fazem uso de Atas? ",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 11 ############################
+    ######################## pergunta 11 ############################
 
     bot.send_message(chat_id=message.chat.id,
                      text="Essas Atas são publicadas?",
                      reply_markup=makeKeyboard(perguntas_1),
                      parse_mode='HTML')
 
-######################## pergunta 12 ############################
+
+    #########################################################
+    # O bot fornece uma resposta
+    #########################################################
 
     bot.send_message(chat_id=message.chat.id,
                      text="Só um minuto, estou processando suas informações...")
-                     #reply_markup=makeKeyboard(perguntas_1),
-                     #parse_mode='HTML')
+    # reply_markup=makeKeyboard(perguntas_1),
+    # parse_mode='HTML')
 
     return perguntas_1
 
@@ -147,7 +150,8 @@ def handle_command_adminwindow(message):
 def handle_query(call):
     if (call.data.startswith("['value'")):
         print(f"call.data : {call.data} , type : {type(call.data)}")
-        print(f"ast.literal_eval(call.data) : {ast.literal_eval(call.data)} , type : {type(ast.literal_eval(call.data))}")
+        print(
+            f"ast.literal_eval(call.data) : {ast.literal_eval(call.data)} , type : {type(ast.literal_eval(call.data))}")
         valueFromCallBack = ast.literal_eval(call.data)[1]
         keyFromCallBack = ast.literal_eval(call.data)[2]
         bot.answer_callback_query(callback_query_id=call.id,
@@ -171,6 +175,7 @@ def opcao1(mensagem):
     """
     bot.send_message(mensagem.chat.id, texto)
 
+
 # Função que trata do primeiro item que está dentro da primeira Opção apresentada pelo bot
 @bot.message_handler(commands=["basic"])
 def basic(mensagem):
@@ -178,6 +183,7 @@ def basic(mensagem):
     O plano Basic é ideal para empresas de pequeno porte e que realizam poucas reuniões durante o ano.
     """
     bot.send_message(mensagem.chat.id, texto)
+
 
 # Função que trata do segundo item que está dentro da primeira Opção apresentada pelo bot
 @bot.message_handler(commands=["entreprise"])
@@ -210,23 +216,17 @@ def opcao3(mensagem):
 
 
     #########################################################
-    # O bot fornece uma resposta
-    #########################################################
-
-    bot.send_message(mensagem.chat.id, "'Só um minuto, estou processando as informações...")
-
-    #########################################################
     # Calculo que verifica se a empresa possui uma governança robusta
     #########################################################
-    #soma = int(conselheiro) + 10 * int(governaca) + int(administracao) + int(fiscal) + int(deliberativo) + int(
-        #comites) + int(assembleias) + int(outros) + int(frequencia) + int(atas) + int(publicadas)
+    # soma = int(conselheiro) + 10 * int(governaca) + int(administracao) + int(fiscal) + int(deliberativo) + int(
+    # comites) + int(assembleias) + int(outros) + int(frequencia) + int(atas) + int(publicadas)
     # print(soma)
 
     #########################################################
     # Bot finaliza a conversa oferecendo ou não um determinado produto para o cliente
     #########################################################
     # colocar alguns if condicionais
-    #if soma > 26:
+    # if soma > 26:
     #    if atas == 2 and publicadas == 2:
     #        print('O produto que irá satisfazer as necessidades da sua empresa é o Professional')
     #    elif atas == 2:
@@ -236,7 +236,7 @@ def opcao3(mensagem):
 
     #    print('Um de nossos gerentes irá entrar em contato.')
     #    print('Seja muito bem vindo a Atlas Governance, aqui se inicia uma grande jornada!')
-    #else:
+    # else:
     #    print(
     #        'Sinto muito mas, sua empresa ainda não possui uma governança madura suficiente para utilizar nossos produtos.')
     #    print('Se desejar, temos especialistas que podem ajudar a sua empresa a chegar à maturidade desejada!')
@@ -244,7 +244,7 @@ def opcao3(mensagem):
     #########################################################
     # Coletando o horário em que a pessoa conversou com o bot
     #########################################################
-    #data = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    # data = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
 
 #########################################################
@@ -253,12 +253,16 @@ def opcao3(mensagem):
 def verificar(mensagem):
     return True
 
+
+#########################################################
+# Mensagem de saudadção do bot
+# #########################################################
+
 @bot.message_handler(func=verificar)
 def responder(mensagem):
-    texto = """
-    Oi, tudo  bem 😃
+    #firstName = update.messagem.from_user.first_name
+    texto =     """Oi tudo  bem 😃 ?
     Eu sou o bot da Atlas.
-    
     Por favor,  escolha uma das seguintes opções:
     /opcao1 Conheça nossos produtos
     /opcao2 Mais informações
@@ -267,32 +271,13 @@ def responder(mensagem):
     """
     bot.reply_to(mensagem, texto)
 
-
-@bot.message_handler(func=verificar)
-def responder(mensagem):
-    texto = """
-    Oi, tudo  bem 😃
-    Eu sou o bot da Atlas.
-
-    Por favor,  escolha uma das seguintes opções:
-    /opcao1 Conheça nossos produtos
-    /opcao2 Mais informações
-    /opcao3 Encontre o melhor produto para sua empresa
-    Clique em uma das opções acima!!!
-    """
-    bot.reply_to(mensagem, texto)
-
-
-#nome = str(input('Olá, qual é o seu nome?'))
-#print('Oi', nome, ',' 'sou o bot da Atlas')
 
 bot.polling()
-    #while True:
-    #    try:
-    #        bot.polling(none_stop=True, interval=0, timeout=0)
-    #    except:
-    #        time.sleep(10)
+# while True:
+#    try:
+#        bot.polling(none_stop=True, interval=0, timeout=0)
+#    except:
+#        time.sleep(10)
 
 
-
-#bot.polling()
+# bot.polling()
