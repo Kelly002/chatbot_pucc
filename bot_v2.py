@@ -183,7 +183,7 @@ def opcao1(mensagem):
 @bot.message_handler(commands=["basic"])
 def basic(mensagem):
     texto = """
-    O plano Basic é ideal para empresas de pequeno porte e que realizam poucas reuniões durante o ano.
+    O plano Basic é ideal para empresas de pequeno porte e que realizam ✍️ poucas reuniões durante o ano.
     """
     bot.send_message(mensagem.chat.id, texto)
 
@@ -192,7 +192,7 @@ def basic(mensagem):
 @bot.message_handler(commands=["entreprise"])
 def entreprise(mensagem):
     texto = """
-    Com o plano Enterprise, é possível criar reuniões, fazer o gerenciamento das pautas e das deliberações, convocar os participantes; tudo isso em menos de três minutos."""
+    Com o plano Enterprise, é possível criar reuniões, fazer o gerenciamento das pautas e das deliberações, convocar os participantes; tudo isso em menos de ⌚️ três minutos."""
     bot.send_message(mensagem.chat.id, texto)
 
 
@@ -200,7 +200,7 @@ def entreprise(mensagem):
 @bot.message_handler(commands=["professional"])
 def professional(mensagem):
     texto = """
-    Já com o plano Professional, além do usuário conseguir fazer toda a gestão de suas reuniões, ele também consegue assinar as Atas e os documentos, utilizando nosso sistema de Assinatura Eletrônica.
+    Já com o plano Professional, além do usuário conseguir fazer toda a gestão de suas reuniões, ele também consegue assinar as Atas e os documentos, utilizando nosso sistema de Assinatura Eletrônica 📝.
     """
     bot.send_message(mensagem.chat.id, texto)
 
