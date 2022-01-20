@@ -141,7 +141,12 @@ def handle_command_adminwindow(message):
     #########################################################
 
     bot.send_message(chat_id=message.chat.id,
-                     text="Só um minuto, estou processando suas informações...")
+                     text="Pronto, um de nossos gerentes irá entrar em contato com você")
+    # reply_markup=makeKeyboard(perguntas_1),
+    # parse_mode='HTML')
+    
+    bot.send_message(chat_id=message.chat.id,
+                     text="Seja muito bem vindo a Atlas Governance, aqui se inicia uma grande 🚀 jornada!  ")
     # reply_markup=makeKeyboard(perguntas_1),
     # parse_mode='HTML')
 
