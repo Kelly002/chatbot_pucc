@@ -11,7 +11,6 @@
 # Importando as bibliotecas necessárias para a construção do bot
 #########################################################
 # !pip install pytelegrambotapi   instala a biblioteca do Telegram via terminal
-#import telebot
 
 #import requests
 import telebot
@@ -28,12 +27,11 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMa
 CHAVE_API = '5060316690:AAHT4YuNvXGUEk6c9-exoUQAxYUie1IXXpE'
 bot = telebot.TeleBot(CHAVE_API)
 
-# Cria um dicionário com chaves e valores que serão utilizados como entrada para os botões do bot
-stringList = {"1": "👍 Sim", "2": "👎 Não"}
-
-# Traz as informações pessoais do usuário que está interagindo com o bot  #id=5060316690
+# Traz as informações pessoais do usuário que está interagindo com o bot  
 print(bot.get_me())
 
+# Cria um dicionário com chaves e valores que serão utilizados como entrada para os botões do bot
+stringList = {"1": "👍 Sim", "2": "👎 Não"}
 
 #########################################################
 # Criação dos botões do Bot
@@ -137,11 +135,11 @@ def handle_command_adminwindow(message):
 
 
     #########################################################
-    # O bot fornece uma resposta
+    # O bot fornece uma resposta, finalizando a captação das perguntas
     #########################################################
 
     bot.send_message(chat_id=message.chat.id,
-                     text="Pronto, um de nossos gerentes irá entrar em contato com você")
+                     text="Pronto 😊, um de nossos gerentes irá entrar em contato com você")
     # reply_markup=makeKeyboard(perguntas_1),
     # parse_mode='HTML')
     
@@ -152,7 +150,10 @@ def handle_command_adminwindow(message):
 
     return perguntas_1
 
-
+  
+#########################################################
+# Apresenta a resposta do botão na tela
+#########################################################
 # Função que expõe as informções dos cliks dos botões na tela do bot
 @bot.callback_query_handler(func=lambda call: True)
 def handle_query(call):
