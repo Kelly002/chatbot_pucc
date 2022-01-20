@@ -10,7 +10,8 @@
 #########################################################
 # Importando as bibliotecas necessárias para a construção do bot
 #########################################################
-# !pip install pytelegrambotapi   instala a biblioteca do Telegram via terminal
+# pip install pytelegrambotapi   instala a biblioteca do Telegram via terminal
+# pip install PyTelegramBotAPI
 
 #import requests
 import telebot
