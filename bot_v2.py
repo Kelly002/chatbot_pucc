@@ -199,7 +199,7 @@ def basic(mensagem):
 @bot.message_handler(commands=["entreprise"])
 def entreprise(mensagem):
     texto = """
-    Com o plano Enterprise, é possível criar reuniões, fazer o gerenciamento das pautas e das deliberações, convocar os participantes; tudo isso em menos de ⌚️ três minutos."""
+    Com o plano Enterprise, é possível criar reuniões, fazer o gerenciamento das pautas e das deliberações, convocar os participantes; tudo isso em menos de  🕜  três minutos."""
     bot.send_message(mensagem.chat.id, texto)
 
 
