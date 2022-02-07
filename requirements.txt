@@ -1,5 +1,4 @@
-distribute==0.6.24
-setuptools==1.0
+python==3.6.8
 requests
 python-telegram-bot
 pytelegrambotapi
