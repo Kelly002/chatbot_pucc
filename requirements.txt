@@ -3,3 +3,7 @@ python-telegram-bot
 pytelegrambotapi
 pandas
 time
+Flask==1.0.1
+gunicorn==19.7.1
+json
+python==3.6.4
