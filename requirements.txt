@@ -1,7 +1,5 @@
-python==3.6.8
 requests
 python-telegram-bot
 pytelegrambotapi
-json
 pandas
 time
