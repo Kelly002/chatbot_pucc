@@ -2,5 +2,4 @@ requests
 python-telegram-bot
 pytelegrambotapi
 pandas
-json
-python==3.6.4
+
